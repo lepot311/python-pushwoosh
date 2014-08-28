@@ -1,6 +1,6 @@
 """ Python module for using the Pushwoosh API """
 
-import httplib
+import http
 import json
 
 SERVER = 'cp.pushwoosh.com'
@@ -32,7 +32,7 @@ class Pushwoosh(object):
 
     def _request(self, method, body, url):
         """ private request function """
-        connection = httplib.HTTPSConnection(SERVER)
+        connection = http.client.HTTPSConnection(SERVER)
         headers = {'content-type': 'application/json'}
         connection.request(method, url, body=body, headers=headers)
         resp = connection.getresponse()
